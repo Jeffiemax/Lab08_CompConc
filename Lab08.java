@@ -185,9 +185,9 @@ class LE {
   //--------------------------------------------------------
   // Classe principal
   class Lab08{
-    static final int L = 2;
-    static final int E = 4;
-    static final int LE = 2;
+    static final int L = 2; //Número de threads leitora
+    static final int E = 4; //Número de threads escritora
+    static final int LE = 2; //Número de threads leitora e escritora
   
     public static void main (String[] args) {
       int i;
@@ -198,17 +198,20 @@ class LE {
       LeitorEscritor[] le = new LeitorEscritor[LE]; // Threads leitores e escritores
 
       //inicia o log de saida
-     /*  System.out.println ("import verificaLE");
-      System.out.println ("le = verificaLE.LE()"); */
+      System.out.println ("import verificaLE");
+      System.out.println ("le = verificaLE.LE()");
       
+      //Inicia as threads leitoras 
       for (i=0; i<L; i++) {
          l[i] = new Leitor(i+1, (i+1)*500, monitor);
          l[i].start(); 
       }
+      //Inicia as threads escritoras
       for (i=0; i<E; i++) {
          e[i] = new Escritor(i+1, (i+1)*500, monitor);
          e[i].start(); 
       }
+      //Inicia as threads leitoras e escritoras
       for (i=0; i<LE; i++) {
         le[i] = new LeitorEscritor(i+1, (i+1)*500, monitor);
         le[i].start(); 
